@@ -105,7 +105,8 @@ var FanFanGame = function() {
                 doubleCount++;
                 musicInstance.doubleMusicPlaying();
                 if (doubleCount === 10) {
-                    alert('你胜利了');
+                    alert('你胜利了，再来一盘！');
+                    startGame();
                 }
             } else {
                 currentClickedObj.removeClass('moveRotation').addClass('initialRotation').addClass('moveRightRotation').css('background', "url('resource/images/contrary.png') no-repeat");
@@ -234,7 +235,8 @@ var FanFanGame = function() {
 
         // 创建倒计时
         createCountDown(835, 360, 60, function () {
-            alert('失败了');
+            alert('失败了，再来一盘');
+            startGame();
         });
 
         // 单例加载背景音乐
