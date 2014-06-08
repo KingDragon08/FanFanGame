@@ -1,0 +1,93 @@
+#cardContainer {
+    visibility: hidden;
+    width: 650px;
+    height: 553px;
+    z-index: 1000;
+    position: absolute;
+    background: url('../images/box.png') no-repeat;
+}
+
+#cardContainer li {
+    
+    /* using CSS3 Transitions with all vendors prefixes */
+    /* for IE10, Chrome & Safari, Firefox, Opera */
+    -ms-transition-property: all;
+    -ms-transition-duration: .4s;
+    -ms-transition-timing-function: ease;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: .4s;
+    -webkit-transition-timing-function: ease;
+    -moz-transition-property: all;
+    -moz-transition-duration: .4s;
+    -moz-transition-timing-function: ease;
+    -o-transition-property: all;
+    -o-transition-duration: .4s;
+    -o-transition-timing-function: ease;
+    
+    transition-property: all;
+    transition-duration: .4s;
+    
+    -ms-backface-visibility: visible;
+    -ms-transform-origin: 50% 50%;
+    -webkit-backface-visibility: visible;
+    -webkit-transform-origin-x: 50%;
+    -webkit-transform-origin-y: 50%;
+    -moz-backface-visibility: visible;
+    -moz-transform-origin: 50% 50%;
+
+    backface-visibility: visible;
+    transform-origin: 50% 50%;
+    width: 99px;
+    height: 99px;
+    list-style: none;
+    float:left;
+    background: url('../images/contrary.png') no-repeat;    
+    margin-right: 18px;
+    margin-top: 19px;
+
+}
+
+.moveRotation
+{
+    -ms-transform: perspective(500px) rotateY(180deg) scale(1);
+    -webkit-transform: perspective(500px) rotateY(180deg) scale(1);
+    -moz-transform: perspective(500px) rotateY(180deg) scale(1);
+    -o-transform: scale(1);
+}
+
+.moveRightRotation {
+     -ms-transform: perspective(500px) rotateY(-180deg) scale(1);
+    -webkit-transform: perspective(500px) rotateY(-180deg) scale(1);
+    -moz-transform: perspective(500px) rotateY(-180deg) scale(1);
+    -o-transform: scale(1);       
+}
+
+.initialRotation {
+    -ms-transform: perspective(500px) rotateY(0deg) scale(1);
+    -webkit-transform: perspective(500px) rotateY(0deg) scale(1);
+    -moz-transform: perspective(500px) rotateY(0deg) scale(1);
+    -o-transform: scale(1);
+}
+
+#music_control {
+    width: 84px;
+    height: 74px;
+    position: absolute;
+    visibility: hidden;
+}
+
+#music_control.musicopen  {
+    background: url('../images/soundOpen.png') no-repeat;
+}
+
+#music_control.musicclose  {
+    background: url('../images/soundClose.png') no-repeat;
+}    
+
+#reboot_game {
+    width: 75px;
+    height: 66px;
+    background: url('../images/refresh.png') no-repeat;
+    visibility: hidden;
+    position: absolute;
+}
