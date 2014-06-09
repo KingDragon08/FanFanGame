@@ -1,7 +1,7 @@
 /**
  * 鸵鸟类
  */
- (function (w) {
+ (function (window) {
     var Bird = function(x, y, img, stage) {
         this.x = x;
         this.y = y;
@@ -31,7 +31,7 @@
 
     };
 
-    w.createBird = function(x, y, img, stage) {
+    window.createBird = function(x, y, img, stage) {
         return new Bird(x, y, img, stage);
     };
 

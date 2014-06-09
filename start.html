@@ -66,14 +66,14 @@ var FanFanGame = function() {
 
     // 左翻卡牌
     var turnAll2Left = function() {
-        $card.removeClass('initialRotation').addClass('moveRotation').attr('opened', true);
+        $card.removeClass('initialRotation').addClass('moveLeftRotation').attr('opened', true);
         $card.each(function () {
             $(this).css('background', $(this).data('background'));
         });
         
         clearTimeout(timer);
         timer = setTimeout(function () {
-            $card.removeClass('moveRotation').addClass('initialRotation');
+            $card.removeClass('moveLeftRotation').addClass('initialRotation');
             turnAll2Right();
         }, VIEW_TIME);
 
@@ -92,7 +92,7 @@ var FanFanGame = function() {
         if (obj.attr('opened')) return;
        
         // 先做动画
-        obj.removeClass('initialRotation').addClass('moveRotation').css('background', obj.data('background'));
+        obj.removeClass('initialRotation').addClass('moveLeftRotation').css('background', obj.data('background'));
         musicInstance.clickMusicPlaying();
         if (currentClickedObj == null) {
             obj.attr('opened', true);
@@ -106,10 +106,10 @@ var FanFanGame = function() {
                 musicInstance.doubleMusicPlaying();
                 if (doubleCount === 10) {
                     alert('你胜利了，再来一盘！');
-                    startGame();
+                    // startGame();
                 }
             } else {
-                currentClickedObj.removeClass('moveRotation').addClass('initialRotation').addClass('moveRightRotation').css('background', "url('resource/images/contrary.png') no-repeat");
+                currentClickedObj.removeClass('moveLeftRotation').addClass('initialRotation').addClass('moveRightRotation').css('background', "url('resource/images/contrary.png') no-repeat");
                 currentClickedObj.attr('opened', null);
                 currentClickedObj = obj;
                 obj.attr('opened', true);
@@ -137,8 +137,8 @@ var FanFanGame = function() {
             var tag1 = tags[idx++];
             var tag2 = tags[idx++];
             // 将两个问号设置为一个相同的图片
-            $card.eq(tag1).data('background', "url('resource/images/fruit" + (image + 1) + ".png') no-repeat").removeClass('moveRotation rightRotation').attr('opened', null);
-            $card.eq(tag2).data('background', "url('resource/images/fruit" + (image + 1) + ".png') no-repeat").removeClass('moveRotation rightRotation').attr('opened', null);
+            $card.eq(tag1).data('background', "url('resource/images/fruit" + (image + 1) + ".png') no-repeat").removeClass('moveLeftRotation rightRotation').attr('opened', null);
+            $card.eq(tag2).data('background', "url('resource/images/fruit" + (image + 1) + ".png') no-repeat").removeClass('moveLeftRotation rightRotation').attr('opened', null);
 
         }
     };    
@@ -171,7 +171,6 @@ var FanFanGame = function() {
 
     // 资源加载完毕后, 初始化开始游戏的场景
     var initStartGameScene = function() {
-        // 获取对应资源
         var indexBgImage = loader.getResult('indexBg');
 
         // 添加背景图
@@ -185,8 +184,10 @@ var FanFanGame = function() {
         startButton.x = 210*2;
         startButton.y = 189*2;
         startButton.addEventListener('click', startGame);
-        startButton.cursor = 'pointer';
+        stage.enableMouseOver(10);
+        new createjs.ButtonHelper(startButton);
         stage.addChild(startButton);
+    
         stage.update();
     };
 
@@ -236,7 +237,7 @@ var FanFanGame = function() {
         // 创建倒计时
         createCountDown(835, 360, 60, function () {
             alert('失败了，再来一盘');
-            startGame();
+            // startGame();
         });
 
         // 单例加载背景音乐
@@ -249,7 +250,7 @@ var FanFanGame = function() {
 
         if (!createjs.Ticker.hasEventListener('tick')) {
             createjs.Ticker.timingMode = createjs.Ticker.RAF;
-            createjs.Ticker.setFPS(30);
+            createjs.Ticker.setFPS(60);
             createjs.Ticker.addEventListener('tick', tick);            
         }
     };

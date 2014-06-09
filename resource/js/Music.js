@@ -1,7 +1,7 @@
 /**
  * 音乐控制类
  */
-(function (w) {
+(function (window) {
     var Music = function() {
         this.loader = null;
         this.preload();

@@ -1,7 +1,7 @@
 /**
  * 倒计时类
  */
- (function (w) {
+ (function (window) {
     var _timer = null;
     var CountDown = function(x, y, count, callback) {
         this.run(x, y, count, callback);
@@ -28,7 +28,7 @@
         }
     };
 
-    w.createCountDown = function(x, y, count, callback) {
+    window.createCountDown = function(x, y, count, callback) {
         x = x || 0;
         y = y || 0;
         count = count || 60;
