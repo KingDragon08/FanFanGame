@@ -1,1 +1,0 @@
-for i in $(seq 18); do convert -resize 99 "fruit$i.png" "fruit$i.png"; done;
